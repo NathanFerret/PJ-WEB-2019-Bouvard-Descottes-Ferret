@@ -9,10 +9,13 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
 	</script>  
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>  
+	
 
 
 </head>
 <body>
+		
+
 	<nav class="navbar navbar-expand-md">      
 		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
@@ -38,6 +41,7 @@
 	<div class="testa">
 		<div class="row">           
 			<div class="list" id="tab">
+				<form  method="post" action="vendeur.php">
 				<table>
 					<p><b>Ajouter un article à vendre</b></p>
 					<tr>
@@ -73,10 +77,14 @@
 						<td><textarea type="text" name="Description" value=""/></textarea></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Charger une image"/></td>
-						<td><input type="submit" value="Mettre en vente"/></td>
+						
+						<td><input type="submit" value="Mettre en vente" id="button2" name="button2"/></td>
+
 					</tr>
 				</table>
+			</form>
+			<form>
+						<td><input type="submit" value="Charger une image" name="button1"/></td></form>
 
 			</div>         
 			<div class="blocvendeur" id="tab2">   
@@ -235,7 +243,7 @@
 			</div>
 		</div>
 		<br>
-</div>
+	</div>
 
 
 
