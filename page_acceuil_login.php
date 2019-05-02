@@ -25,37 +25,37 @@
 				<tr>
 				<p><b>Inscription</b></p>
 				<td>Nom</td>
-				<td><input type="text" name="Nom" value=""/></td>
+				<td><input type="text" name="Nom" value="Default"/></td>
 				<br><br>
 				<td>Prenom</td>
-				<td><input type="text" name="Prenom" value=""/></td>
+				<td><input type="text" name="Prenom" value="Default"/></td>
 				<br><br>
 				<td>Pseudo</td>
-				<td><input type="text" name="Pseudo" value=""/></td>
+				<td><input type="text" name="Pseudo" value="Default"/></td>
 				<br><br>
 				<td>Email</td>
-				<td><input type="text" name="email" value=""/></td>
+				<td><input type="text" name="email" value="Default"/></td>
 				<br><br>
 				<td>Mot de passe</td>
-				<td><input type="text" name="Motdepasse" value=""/></td>
+				<td><input type="password" name="Motdepasse" value="Default"/></td>
 				<br><br>
 				<td>Pays</td>
-				<td><input type="text" name="pays" value=""/></td>
+				<td><input type="text" name="pays" value="France"/></td>
 				<br><br>
 				<td>Adresse ligne 1</td>
-				<td><input type="text" name="Adresseligne1" value=""/></td>
+				<td><input type="text" name="Adresseligne1" value="Default"/></td>
 				<br><br>
 				<td>Adresse ligne 2</td>
-				<td><input type="text" name="Adresseligne2" value=""/></td>
+				<td><input type="text" name="Adresseligne2" value="None"/></td>
 				<br><br>
 				<td>Ville</td>
-				<td><input type="text" name="Ville" value=""/></td>
+				<td><input type="text" name="Ville" value="Default"/></td>
 				<br><br>
 				<td>Code postal</td>
-				<td><input type="text" name="Codepostal" value=""/></td>
+				<td><input type="text" name="Codepostal" value="00000"/></td>
 				<br><br>
 				<td>Numéro de téléphone</td>
-				<td><input type="text" name="Numérodetéléphone" value=""/></td>
+				<td><input type="text" name="Numérodetéléphone" value="0000000000"/></td>
 				<br><br>
 				</tr>
 				<tr>
@@ -76,7 +76,7 @@
 				<td><input type="text" name="PseudoCo" value=""/>
 				</td><td>Pseudo</td>
 				<br><br>
-				<td><input type="text" name="MotdePasseCo" value=""/></td>
+				<td><input type="password" name="MotdePasseCo" value=""/></td>
 				<td>Mot de passe</td>
 				<br><br>
 				</tr>

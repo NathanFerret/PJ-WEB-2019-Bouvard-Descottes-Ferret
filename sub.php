@@ -6,43 +6,42 @@ if (isset ($_POST['butt'])){
 
 	$nom = $_POST["Nom"];  
 	$Prenom = $_POST["Prenom"]; 
-    $Pseudo = $_POST["Pseudo"]; 
-    $Mdp = $_POST["Motdepasse"]; 
-    $aun = $_POST["Adresseligne1"]; 
-    $adeux = $_POST["Adresseligne2"]; 
-    $Ville= $_POST["Ville"]; 
-    $postal = $_POST["Codepostal"]; 
-    $phone = $_POST["Numérodetéléphone"];  
-    $email = $_POST["email"]; 
-    $pays = $_POST["pays"]; 
-    ;
+  $Pseudo = $_POST["Pseudo"]; 
+  $Mdp = $_POST["Motdepasse"]; 
+  $aun = $_POST["Adresseligne1"]; 
+  $adeux = $_POST["Adresseligne2"]; 
+  $Ville= $_POST["Ville"]; 
+  $postal = $_POST["Codepostal"]; 
+  $phone = $_POST["Numérodetéléphone"];  
+  $email = $_POST["email"]; 
+  $pays = $_POST["pays"]; 
+  ;
 
 
-    $database = "projetpiscine";
-    $db_handle  = mysqli_connect ('localhost', 'root', '');  
-    $db_found=mysqli_select_db ($db_handle ,$database ) ;
-    if ($db_found) {
+  $database = "projetpiscine";
+  $db_handle  = mysqli_connect ('localhost', 'root', '');  
+  $db_found=mysqli_select_db ($db_handle ,$database ) ;
+  if ($db_found) {
 
-        $sql="SELECT * FROM utilisateur WHERE pseudo LIKE '%$Pseudo%'";
-        $result = mysqli_query($db_handle, $sql);
+    $sql="SELECT * FROM utilisateur WHERE pseudo LIKE '%$Pseudo%'";
+    $result = mysqli_query($db_handle, $sql);
+    
+    if (mysqli_num_rows($result) != 0) { 
+     echo "pseudo déjà utilisé";
+     echo" 
+     <form name='x' action='page_acceuil_login.php' method='post'>
+     <input type='submit' value='Retour'>
+     </form>";
+   }
 
-        if (mysqli_num_rows($result) != 0) { 
-           echo "pseudo déjà utilisé";
-           echo" 
-           <form name='x' action='page_acceuil_login.php' method='post'>
-           <input type='submit' value='Retour'>
-           </form>";
-       }
+   else {
 
-
-
-       else {
         $sql= "INSERT INTO utilisateur (pseudo , email, mdp, nom, prenom,numeroTel,statut) VALUES('$Pseudo','$email','$Mdp','$nom','$Prenom','$phone','normal')";
 
 
         $result = mysqli_query($db_handle, $sql);
 
-// var_dump($result); 
+        var_dump($result); 
 
         $sqld = "INSERT INTO adresse (adresse1  , adresse2, ville ,codePostal,  pays) VALUES('$aun','$adeux','$Ville','$postal','$pays')"; 
 
@@ -74,12 +73,12 @@ if (isset ($_POST['butt'])){
        echo $db_field['numeroTel'] . "<br>";
        echo $db_field['statut'] . "<br>";
 
-   }*/
+     }*/
 
-}}
-else {
+   }}
+   else {
     echo "Database NOT Found ";
-}
+  }
 
 }
 ?> 

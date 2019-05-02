@@ -55,7 +55,7 @@ session_start();
 </head>
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>         
+		<a class="navbar-brand" href="page_acheteur"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
