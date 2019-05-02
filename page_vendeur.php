@@ -83,8 +83,7 @@
 					</tr>
 				</table>
 			</form>
-			<form>
-						<td><input type="submit" value="Charger une image" name="button1"/></td></form>
+			
 
 			</div>         
 			<div class="blocvendeur" id="tab2">   

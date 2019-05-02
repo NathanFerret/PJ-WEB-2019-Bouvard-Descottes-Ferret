@@ -21,7 +21,7 @@
 	<div class="row">
 	<div class="col-lg-5 col-md-5 col-sm-12">
 		<div class="colonne1">
-			<form name="form" action="login.php" method="post">
+			<form name="form" action="sub.php" method="post">
 				<tr>
 				<p><b>Inscription</b></p>
 				<td>Nom</td>
@@ -70,18 +70,18 @@
 
 	<div class="col-lg-5 col-md-5 col-sm-12">
 		<div class="colonne2">
-			<form name="form" action="" method="post">
+			<form name="form" action="login.php" method="post">
 				<tr>
 				<p><b>Connexion</b></p>
 				<td><input type="text" name="PseudoCo" value=""/>
 				</td><td>Pseudo</td>
 				<br><br>
-				<td><input type="text" name="Mot de PasseCo" value=""/></td>
+				<td><input type="text" name="MotdePasseCo" value=""/></td>
 				<td>Mot de passe</td>
 				<br><br>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Connexion"/></td>
+					<td><input name="butt" type="submit" value="Connexion"/></td>
 				</tr>
 			</form>
 		</div>
