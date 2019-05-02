@@ -27,7 +27,9 @@ if (isset ($_POST['butt'])){
          </form>";
      }
      else{
-        echo "Faire les header et la session";
+        session_start();
+		$_SESSION['Login']=$Pseudo;
+		HEADER('Location:page_acheteur.php');
      }
 
 

@@ -27,16 +27,16 @@ if (isset ($_POST['butt'])){
         $result = mysqli_query($db_handle, $sql);
 
         if (mysqli_num_rows($result) != 0) { 
-         echo "erreur de saisie ou pseudo déjà utilisé";
-         echo" 
-         <form name='x' action='page_acceuil_login.php' method='post'>
-         <input type='submit' value='Retour'>
-         </form>";
-     }
+           echo "pseudo déjà utilisé";
+           echo" 
+           <form name='x' action='page_acceuil_login.php' method='post'>
+           <input type='submit' value='Retour'>
+           </form>";
+       }
 
 
 
-     else {
+       else {
         $sql= "INSERT INTO utilisateur (pseudo , email, mdp, nom, prenom,numeroTel,statut) VALUES('$Pseudo','$email','$Mdp','$nom','$Prenom','$phone','normal')";
 
 
@@ -52,7 +52,10 @@ if (isset ($_POST['butt'])){
 
         $idrecup=mysqli_insert_id($db_handle);
         $sqlt = "UPDATE utilisateur SET idAdresse = '$idrecup' WHERE pseudo = '$Pseudo' ";
-        $result = mysqli_query($db_handle, $sqlt);     
+        $result = mysqli_query($db_handle, $sqlt); 
+        session_start();
+        $_SESSION['Login']=$Pseudo;
+        HEADER('Location:page_acheteur.php');    
         mysqli_close($db_handle);
 
     /*"Records added to the database";
