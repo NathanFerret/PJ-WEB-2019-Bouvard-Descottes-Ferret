@@ -6,40 +6,40 @@ if (isset ($_POST['button2'])){
 
 	$nom = $_POST["Nomprod"];  
 	$Prix = $_POST["Prix"] ;  
-	$Description = $_POST["Description"];  
+	$Description = $_POST["Description"]; 
+ $url = $_POST["url"] ;  
+ $urlv = $_POST["urlv"] ; 
+ $taille = $_POST["taille"] ;  
+ $couleur = $_POST["couleur"] ;
+ $genre = $_POST["genre"] ;
 
-	$database = "projetpiscine";
-	$db_handle  = mysqli_connect ('localhost', 'root', '');  
-	$db_found=mysqli_select_db ($db_handle ,$database ) ;
-if ($db_found) {
 
 
-	$sql = "INSERT INTO item (nomitem,description,prixunitaire,video,idcategorie,idmodele,idpanier) VALUES('$nom','$Description','$Prix','2','3','4','5')"; 
+ foreach($_POST['checkbo'] as $valeur){}
+    if($valeur=='Livres'){foreach($_POST['cho1'] as $selectValue){}}
+    if($valeur=='Sport et Loisirs'){foreach($_POST['cho2'] as $selectValue){}}
+    if($valeur=='Musique'){foreach($_POST['cho3'] as $selectValue){}}
+    if($valeur=='Vêtements'){foreach($_POST['cho4'] as $selectValue){}}
+echo "$selectValue";
 
-$result = mysqli_query($db_handle, $sql); 
-	mysqli_close($db_handle);
- 
-    echo "Records added to the database";
-    $database = "projetpiscine";
-	$db_handle  = mysqli_connect ('localhost', 'root', '');  
-	$db_found=mysqli_select_db ($db_handle ,$database ) ;
-    $SQLE = "SELECT * FROM item";
-    $resulte = mysqli_query($db_handle, $SQLE);
-    while ($db_field = mysqli_fetch_assoc($resulte) ) {
-             echo $db_field['iditem'] . "<br>";
-             echo $db_field['nomitem'] . "<br>";
-             echo $db_field['description'] . "<br>";
-             echo $db_field['prixunitaire'] . "<br>";
-             echo $db_field['video'] . "<br>";
-             echo $db_field['idcategorie'] . "<br>";
-             echo $db_field['idmodele'] . "<br>";
-             echo $db_field['idpanier'] . "<br>";
-      }
 
-}
-else {
-    echo "Database NOT Found ";
-}
-mysqli_close($db_handle);
-}
-?> 
+                   $database = "projetpiscine";
+               $db_handle  = mysqli_connect ('localhost', 'root', '');  
+               $db_found=mysqli_select_db ($db_handle ,$database ) ;
+               if ($db_found) {
+
+
+                   $sql = "INSERT INTO item (nomitem,description,prixunitaire,video,categorie,sscategorie,image,couleur,taille,genre,pseudo) VALUES('$nom','$Description','$Prix','$urlv','$valeur','$selectValue','$url','$couleur','$taille','$genre','moi')";
+
+                   $result = mysqli_query($db_handle, $sql); 
+                   var_dump($result);   
+
+                   mysqli_close($db_handle);
+
+               }
+               else {
+                echo "Database NOT Found ";
+            }
+
+        }
+        ?> 

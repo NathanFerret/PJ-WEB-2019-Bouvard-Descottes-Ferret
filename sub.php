@@ -55,6 +55,7 @@ if (isset ($_POST['butt'])){
         $result = mysqli_query($db_handle, $sqlt); 
         session_start();
         $_SESSION['Login']=$Pseudo;
+        $_SESSION['Stock']=$Pseudo;
         HEADER('Location:page_acheteur.php');    
         mysqli_close($db_handle);
 

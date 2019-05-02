@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,45 +94,46 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td id="case1"><input type="checkbox" id="checkbo1" class="checkbo"/>Livres</td>
-					<td>
-						<select id="select1" > 
-							<option>Roman</option> 
-							<option>Fantastique</option>
-							<option>BD</option> 
+					<td id="case1"><input type="checkbox" name="checkbo[]" value="Livres" id="checkbo1" class="checkbo"/>Livres</td>
+					<td id="select1">
+						<select name="cho1[]"> 
+							<option value="Roman">Roman</option> 
+							<option value="Fantastique">Fantastique</option>
+							<option value="BD">BD</option> 
 						</select> 
 					</td>
 				</tr>
 				<tr>
-					<td id="case2"><input type="checkbox" id="checkbo2" class="checkbo"/>Sport et Loisirs</td>
+					<td id="case2"><input type="checkbox" name="checkbo[]" value="Sport et Loisirs" id="checkbo2" class="checkbo"/>Sport et Loisirs</td>
 					<td id="select2">
-						<select> 
-							<option>Running</option> 
-							<option>Sport extétieur</option>
-							<option>Sport intérieur</option>
-							<option>Autre</option> 
+						<select name="cho2[]"> 
+							<option value="Running">Running</option> 
+							<option value="Sport extétieur">Sport extétieur</option>
+							<option value="Sport intérieur">Sport intérieur</option>
+							<option value="Autre">Autre</option> 
 						</select> 
 					</td>
 				</tr>
 				<tr>
-					<td id="case3"><input type="checkbox" id="checkbo3" class="checkbo"/>Musique</td>
-					<td >
-						<select id="select3"> 
-							<option>Classique</option> 
-							<option>Rap</option>
-							<option>Rock</option>
-							<option>Variété</option> 
+					<td id="case3"><input type="checkbox" name="checkbo[]" value="Musique" id="checkbo3" class="checkbo"/>Musique</td>
+					<td id="select3">
+						<select name="cho3[]"> 
+							<option value="Classique">Classique</option> 
+							<option value="Rap">Rap</option>
+							<option value="Rock">Rock</option>
+							<option value="Variété">Variété</option> 
 						</select> 
 					</td>
 				</tr>
 				<tr>
-					<td id="case4"><input type="checkbox" id="checkbo4" class="checkbo"/>Vêtements</td>
-					<td >
-						<select id="select4"> 
-							<option>Chaussures</option> 
-							<option>Chemise</option>
-							<option>T-shirt</option>
-							<option>Pantalons</option> 
+					<td id="case4"><input type="checkbox" name="checkbo[]" value="Vêtements" id="checkbo4" class="checkbo"/>Vêtements</td>
+					<td id="select4">
+						<select name="cho4[]"> 
+							 
+							<option value="Chemise">Chemise</option>
+							<option value="Chaussures">Chaussures</option>
+							<option value="T-shirt">T-shirt</option>
+							<option value="Pantalons">Pantalons</option> 
 						</select> 
 					</td>
 				</tr>												
@@ -137,8 +141,29 @@
 					<td>Description</td>
 					<td><textarea type="text" name="Description" value=""/></textarea></td>
 				</tr>
+									<tr>
+						<td>taille*</td>
+						<td><input type="text" name="taille" value=""/></td>
+					</tr>
+					<tr>
+						<td>couleur*</td>
+						<td><input type="text" name="couleur" value=""/></td>
+					</tr>
+					<tr>
+						<td>genre*</td>
+						<td><input type="text" name="genre" value=""/></td>
+					</tr>
+									
 				<tr>
-					<td><input type="submit" value="Charger une image"/></td>
+					<td>Url image</td>
+					<td><input type="text" name="url" value=""/></td>
+				</tr>
+				<tr>
+					<td>Url vidéo*</td>
+					<td><input type="text" name="urlv" value=""/></td>
+				</tr>
+				<tr>
+					<td>(* optionnel)</td>
 					<td><input type="submit" value="Mettre en vente" id="button2" name="button2"/></td>
 				</tr>
 			</table>
