@@ -36,7 +36,7 @@ if (isset ($_POST['button2'])){
            $result = mysqli_query($db_handle, $sql); 
            //var_dump($result);
            mysqli_close($db_handle);
-           HEADER('Location:page_vendeur.php');
+           HEADER('Location:page_produit_mis_en_vente.php');
 
          }
          else{
