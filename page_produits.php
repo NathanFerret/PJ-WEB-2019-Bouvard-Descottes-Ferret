@@ -35,15 +35,9 @@ session_start();
 			});                
 		}); 
 	</script>  
-	<script>
- 			$(document).ready(function(){
 
- 				$("divimage").click(function(){
- 					var id = $(this).attr("id");
-  					alert(id);
- 				});
- 			});
- 	</script>
+ 	<divstock id="vide"></divstock>
+
 	
 
 </head>
@@ -111,26 +105,30 @@ session_start();
 							$sql="SELECT * FROM item";
 						    $result = mysqli_query($db_handle, $sql);
 						    while ($db_field = mysqli_fetch_assoc($result) ){
+						    	echo '<form name="form" action="page_produit_détaillé.php" method="post">';
 						    	echo '<div class="caseitem">';
 								echo '<table  class="tableauimage">';
 								echo "<tr>";
 						    	echo "<td>";
 						    	echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
-						    	/*<a href='page_produit_détaillé.php'></a>*/
 								echo "<br>";
 						    	echo $db_field['nomitem'];
 						    	echo "<br>";
+						    	echo "Prix : ";
 						    	echo $db_field['prixunitaire'];
-						    	echo "€";
+						    	echo " €";
 						    	echo "<br>";
 						    	echo "Vendeur : ";
-						    	$_SESSION['Stock']=$db_field['pseudo'];
-						    	echo $_SESSION['Stock'];
+						    	echo $db_field['pseudo'];
 						    	echo "<br>";
+						    	echo '<input type="submit" value ="Voir le produit"/>';
+						    	echo '<br>';
+						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
 						    	echo "</td>";
 						    	echo"</tr>";
 						    	echo "</table>";
 						    	echo "</div>";
+						    	echo '</form>';
 						    }
 						?>							
 					</td>

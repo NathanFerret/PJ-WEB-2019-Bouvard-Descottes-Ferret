@@ -43,12 +43,21 @@ session_start();
 <br>
 
 <div class="row">
-	<div class="col-lg-5 col-md-5 col-sm-12">
-		<img class="bloc" src="photo_profil.png" height=500 width=500/>
-	</div>
 	<?php
+	$iditem=$_POST['iditem'];
+	$database = "projetpiscine";
+  	$db_handle  = mysqli_connect ('localhost', 'root', '');  
+  	$db_found=mysqli_select_db ($db_handle ,$database ) ;
+	$sql='SELECT * FROM item WHERE iditem = "'.$iditem.'" ';
+	$result = mysqli_query($db_handle, $sql);
+	$db_field = mysqli_fetch_assoc($result);
+	echo '<div class="col-lg-5 col-md-5 col-sm-12">';
+	echo $iditem;
+		echo '<img src='.$db_field['image'].' height="500" width="500"/>';
+	echo '</div>';
+	
 		echo '<div class="col-lg-7 col-md-7 col-sm-12">';
-		echo '<p class="bloc">Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. Ceci est une description. </p>';
+		echo '<p class="bloc"> '.$db_field['description'].' </p>';
 		echo '<div class="row">';
 			echo '<div class="col-lg-6 col-md-6 col-sm-12">';
 				echo '<form name="form" action="page_profil_vendeur.html">';
