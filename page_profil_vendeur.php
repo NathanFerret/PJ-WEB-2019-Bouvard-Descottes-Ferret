@@ -40,49 +40,46 @@ session_start();
 	</nav> 
 </body>
 
-<br>
+<?php
+$pseudo = $_POST['pseudo'];
+$database = "projetpiscine2";
+$db_handle  = mysqli_connect ('localhost', 'root', '');  
+$db_found=mysqli_select_db ($db_handle ,$database ) ;
+$sql='SELECT * FROM utilisateur WHERE pseudo = "'.$pseudo.'" ';
+$result = mysqli_query($db_handle, $sql);
+$db_field = mysqli_fetch_assoc($result);
+echo '<div class="margin">';
+	echo '<div class="row">';
+		echo '<div class="col-lg-6 col-md-6 col-sm-12">';
+			echo "<img src=".$db_field['imageDeFond']." height='176' width='501'/>";
+			echo '<br>';
+			echo '<br>';
 
-<div class="row">
-	<?php
-	$iditem=$_POST['iditem'];
-	$prixunitaire=$_POST['prixunitaire'];
-	$database = "projetpiscine2";
-  	$db_handle  = mysqli_connect ('localhost', 'root', '');  
-  	$db_found=mysqli_select_db ($db_handle ,$database ) ;
-	$sql='SELECT * FROM item WHERE iditem = "'.$iditem.'" ';
-	$result = mysqli_query($db_handle, $sql);
-	$db_field = mysqli_fetch_assoc($result);
-	echo '<div class="col-lg-5 col-md-5 col-sm-12">';
-		echo '<img src='.$db_field['image'].' height="500" width="500"/>';
-	echo '</div>';
-	
-		echo '<div class="col-lg-7 col-md-7 col-sm-12">';
-		echo '<p class="bloc"><div class="image"> '.$db_field['description'].' </div></p>';
-		echo '<div class="row">';
-			echo '<div class="col-lg-6 col-md-6 col-sm-12">';
-				echo '<form name="form" action="page_profil_vendeur.php" method="post">';
-					echo '<div class="image">';
-						echo "<input type='text' style='display: none;' name ='pseudo' value=".$db_field['pseudo']." readonly>";
-						echo '<input type="submit" value="Aller sur le profil du vendeur"/>';
-					echo '</div>';
-				echo '</form>';
+			echo '<div class="row">';
+				echo '<div class="col-lg-2 col-md-2 col-sm-12">';
+					echo "<img src=".$db_field['photo']." height='142' width='142'/>";
+				echo '</div>';
+				echo '<div class="col-lg-10 col-md-10 col-sm-12">';
+					echo "<p class='bloc'>".$db_field['descriptionutilisateur']."</p>";
+				echo '</div>';
 			echo '</div>';
-			echo '<div class="col-lg-6 col-md-6 col-sm-12">';
-				echo '<form name="form" action="ajout_panier.php">';
-					echo '<div class="image">';
-						echo '<input type="submit" value="Ajouter au panier"/>';
-						echo '<br>';
-						echo $prixunitaire;
-						echo ' €';
-					echo '</div>';
-				echo '</form>';
+		echo '</div>';
+		echo '<div class="col-lg-6 col-md-6 col-sm-12">';
+			echo '<div class="texte_centre_gros">';
+				echo '<ul>VENTES EN COURS :';
+			echo '</div>';
+			echo '<div class="image">';
+					echo '<li>Produit 1</li>';
+					echo '<li>Produit 2</li>';
+					echo '<li>Produit 3</li>';
+			echo '</div>';
+				echo '</ul>';
 			echo '</div>';
 		echo '</div>';
 	echo '</div>';
-	?>
-</div>
+echo '</div>';
+?>
 
-<br>
 
 <footer class="footer">
 	<div class="row">
