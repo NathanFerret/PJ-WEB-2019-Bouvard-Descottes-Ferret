@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>        
+		<a class="navbar-brand" href="page_acheteur.php"><img src="logo_mini_tr.png"></a>        
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
@@ -40,53 +40,55 @@
 	<div class="testa">
 		<div class="row">          
 			<div class="list"id="tab"> 
-				<h4 class="title">Coordonnées</h4>
+				<h2 class="ft_title">Coordonnées</h2>
 				<form method="post" action="profil_acheteur.php">
-				<table>
-					<tr>
-						<td>Nom</td>
-						<td><input type="text" name="nom" ></td>
-					</tr>
-					<tr>
-						<td>Prénom</td>
-						<td><input type="text" name="prenom"></td>
-					</tr>
-					<tr>
-						<td>Adresse mail</td>
-						<td><input type="text" name="e-mail"></td>
-					</tr>
-					<tr>
-						<td>Adresse (ligne1)</td>
-						<td><input type="text" name="adresse1"></td>
-					</tr>
-					<tr>
-						<td>Adresse (ligne2)</td>
-						<td><input type="text" name="adresse2"></td>
-					</tr>
-					<tr>
-						<td>Ville</td>
-						<td><input type="text" name="Ville"></td>
-					</tr>
-					<tr>
-						<td>Code Postale</td>
-						<td><input type="text" name="CP" value=""></td>
-					</tr>
-					<tr>
-						<td>Pays</td>
-						<td><input type="text" name="Pays"></td>
-					</tr>
-					<tr>
-						<td>Numéro de téléphone</td>
-						<td><input type="text" name="numtel"></td>
-					</tr>
-					<tr>
-						<td><input type="submit" class="button" name="Validation" value="Valider"></td>
-					</tr>
-				</table>
+					<table>
+
+						<tr>
+							<td>Nom</td>
+							<td><input type="text" name="nom" ></td>
+						</tr>
+						<tr>
+							<td>Prénom</td>
+							<td><input type="text" name="prenom"></td>
+						</tr>
+						<tr>
+							<td>Adresse mail</td>
+							<td><input type="text" name="e-mail"></td>
+						</tr>
+						<tr>
+							<td>Adresse (ligne1)</td>
+							<td><input type="text" name="adresse1"></td>
+						</tr>
+						<tr>
+							<td>Adresse (ligne2)</td>
+							<td><input type="text" name="adresse2"></td>
+						</tr>
+						<tr>
+							<td>Ville</td>
+							<td><input type="text" name="Ville"></td>
+						</tr>
+						<tr>
+							<td>Code Postale</td>
+							<td><input type="text" name="CP" value=""></td>
+						</tr>
+						<tr>
+							<td>Pays</td>
+							<td><input type="text" name="Pays"></td>
+						</tr>
+						<tr>
+							<td>Numéro de téléphone</td>
+							<td><input type="text" name="numtel"></td>
+						</tr>
+						<tr>
+							<td><input type="submit" class="button" name="Validation" value="Valider"></td>
+						</tr>
+
+					</table>
 				</form>
 			</div>           
 			<div class="blocimages" id="historique">
-				<h4 class="title">Historique des Achats</h4>
+				<h2 class="ft_title">Historique des Achats</h2>
 				<ul>
 					<li>1</li>
 					<li>2</li>
@@ -95,7 +97,13 @@
 				</ul>
 				<br>
 				<br>
-				<input type="submit" class="button" name="acht" value="Revenir aux Achats">
+				<?php
+				$sess=$_SESSION['Login'];
+				echo "<form name='form' action='page_profil_vendeur.php' method='post'>";
+				echo "<input type='text' style='display: none;' name ='pseudo' value=".$sess." readonly>";
+				echo "<input type='submit' class= 'button' value='Aller sur le profil du vendeur' /> ";
+				echo "</form>";
+				?>
 			</div>
 		</div>
 		<br>

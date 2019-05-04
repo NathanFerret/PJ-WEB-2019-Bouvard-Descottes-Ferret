@@ -13,14 +13,14 @@
 
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo mini tr.png"></a>         
+		<a class="navbar-brand" href="page_acheteur.php"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="#page_produit.php">Vente Flash</a>
+					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
@@ -35,7 +35,7 @@
 		</div> 
 	</nav> 
 </body>
-
+<div class="testa">
 <div class="texte_centre_gros">
 	<br>
 	Votre commande a bien été enregistrée !
@@ -78,6 +78,7 @@
 				&copy ECE PARIS 2019
 			</div>
 		</div>
+	</div>
 	</div>
 </footer>
 
