@@ -50,15 +50,7 @@ session_start();
 		
 		
 	</script> 
-	<script>
-		$(document).ready(function(){
 
-			$("divimage").click(function(){
-				var id = $(this).attr("id");
-				alert(id);
-			});
-		});
-	</script>
 
 </head>
 <body>
@@ -184,31 +176,37 @@ session_start();
 					<tr class="corpsbloc">
 						<td>
 							<?php
-							$database = "projetpiscine";
-							$db_handle  = mysqli_connect ('localhost', 'root', '');  
-							$db_found=mysqli_select_db ($db_handle ,$database ) ;
-							$sql="SELECT * FROM item";
-							$result = mysqli_query($db_handle, $sql);
-							while ($db_field = mysqli_fetch_assoc($result) ){
-								echo '<div class="caseitem">';
+   							$database = "projetpiscine";
+  							$db_handle  = mysqli_connect ('localhost', 'root', '');  
+  							$db_found=mysqli_select_db ($db_handle ,$database ) ;
+  							$sess= $_SESSION['Login'];
+							$sql="SELECT * FROM item WHERE pseudo LIKE '$sess'";
+						    $result = mysqli_query($db_handle, $sql);
+						    while ($db_field = mysqli_fetch_assoc($result) ){
+						    	echo '<form name="form" action="retirer.php" method="post">';
+						    	echo '<div class="caseitem">';
 								echo '<table  class="tableauimage">';
 								echo "<tr>";
-								echo "<td>";
-								echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
-								/*<a href='page_produit_détaillé.php'></a>*/
+						    	echo "<td>";
+						    	echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
 								echo "<br>";
-								echo $db_field['nomitem'];
-								echo "<br>";
-								echo $db_field['prixunitaire'];
-								echo "€";
-
-								echo "<br>";
-								echo "</td>";
-								echo"</tr>";
-								echo "</table>";
-								echo "</div>";
-							}
-							?>									
+						    	echo $db_field['nomitem'];
+						    	echo "<br>";
+						    	echo "Prix : ";
+						    	echo $db_field['prixunitaire'];
+						    	echo " €";
+						    	echo "<br>";
+						    	echo "<br>";
+						    	echo '<input type="submit" class="button" value ="Retirer article"/>';
+						    	echo '<br>';
+						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
+						    	echo "</td>";
+						    	echo"</tr>";
+						    	echo "</table>";
+						    	echo "</div>";
+						    	echo '</form>';
+						    }
+						?>									
 						</td>
 					</tr>
 				</table>
