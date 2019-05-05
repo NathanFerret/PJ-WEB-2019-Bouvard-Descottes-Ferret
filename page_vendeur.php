@@ -51,6 +51,16 @@ session_start();
 		
 	</script> 
 
+	<script>
+		$(document).ready(function(){
+
+			$("divimage").click(function(){
+				var id = $(this).attr("id");
+				alert(id);
+			});
+		});
+	</script>
+
 
 </head>
 <body>
@@ -62,157 +72,156 @@ session_start();
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="page_produit.php">Vente Flash</a>
+
+					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
-					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
+					<a class="nav-link" href="#">Votre compte</a>
 				</li>          
 				<li class="nav-item">
-					<a class="nav-link" href="page_vendeur.php">Vendre</a>
+					<a class="nav-link" href="#">Vendre</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="page_panier.php">Panier</a>
+					<a class="nav-link" href="#">Panier</a>
+
 				</li>         
 			</ul>       
 		</div> 
 	</nav> 
-	<div class="testa">
-		<div class="row"> 
-			<div class="list" id="tab">
-				<form  method="post" action="vendeur.php">
-					<table>
-						<p><h2 class="ft_title">Ajouter un article à vendre</h2></p>
-						<tr>
-							<td>Nom du produit</td>
-							<td><input type="text" name="Nomprod" value=""/></td>
-						</tr>
-						<tr>
-							<td>Prix</td>
-							<td><input type="text" name="Prix" value=""/></td>
-						</tr>
-						<tr>
-							<td><a>Catégorie:</a></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td id="case1"><input type="checkbox" name="checkbo[]" value="Livres" id="checkbo1" class="checkbo"/>Livres</td>
-							<td id="select1">
-								<select name="cho1[]"> 
-									<option value="Roman">Roman</option> 
-									<option value="Fantastique">Fantastique</option>
-									<option value="BD">BD</option> 
-								</select> 
-							</td>
-						</tr>
-						<tr>
-							<td id="case2"><input type="checkbox" name="checkbo[]" value="Sport et Loisirs" id="checkbo2" class="checkbo"/>Sport et Loisirs</td>
-							<td id="select2">
-								<select name="cho2[]"> 
-									<option value="Running">Running</option> 
-									<option value="Sport extétieur">Sport extétieur</option>
-									<option value="Sport intérieur">Sport intérieur</option>
-									<option value="Autre">Autre</option> 
-								</select> 
-							</td>
-						</tr>
-						<tr>
-							<td id="case3"><input type="checkbox" name="checkbo[]" value="Musique" id="checkbo3" class="checkbo"/>Musique</td>
-							<td id="select3">
-								<select name="cho3[]"> 
-									<option value="Classique">Classique</option> 
-									<option value="Rap">Rap</option>
-									<option value="Rock">Rock</option>
-									<option value="Variété">Variété</option> 
-								</select> 
-							</td>
-						</tr>
-						<tr>
-							<td id="case4"><input type="checkbox" name="checkbo[]" value="Vêtements" id="checkbo4" class="checkbo"/>Vêtements</td>
-							<td id="select4">
-								<select name="cho4[]"> 
 
-									<option value="Chemise">Chemise</option>
-									<option value="Chaussures">Chaussures</option>
-									<option value="T-shirt">T-shirt</option>
-									<option value="Pantalons">Pantalons</option> 
-								</select> 
-							</td>
-						</tr>												
-						<tr>
-							<td>Description</td>
-							<td><textarea type="text" name="Description" value=""/></textarea></td>
-						</tr>
-						<tr>
-							<td>taille*</td>
-							<td><input type="text" name="taille" value=""/></td>
-						</tr>
-						<tr>
-							<td>couleur*</td>
-							<td><input type="text" name="couleur" value=""/></td>
-						</tr>
-						<tr>
-							<td>genre*</td>
-							<td><input type="text" name="genre" value=""/></td>
-						</tr>
-
-						<tr>
-							<td>Url image</td>
-							<td><input type="text" name="url" value=""/></td>
-						</tr>
-						<tr>
-							<td>Url vidéo*</td>
-							<td><input type="text" name="urlv" value=""/></td>
-						</tr>
-						<tr>
-							<td>(* optionnel)</td>
-							<td><input type="submit" class="button" value="Mettre en vente" id="button2" name="button2"/></td>
-						</tr>
-					</table>
-				</form>		
-			</div>         
-			<div class="blocvendeur">   
-				<table  class="bandeaubloc">
-					<tr><td><h2 class="ft_title">Vos articles en vente</h2></td></tr>
-					<tr class="corpsbloc">
-						<td>
-							<?php
-   							$database = "projetpiscine";
-  							$db_handle  = mysqli_connect ('localhost', 'root', '');  
-  							$db_found=mysqli_select_db ($db_handle ,$database ) ;
-  							$sess= $_SESSION['Login'];
-							$sql="SELECT * FROM item WHERE pseudo LIKE '$sess'";
-						    $result = mysqli_query($db_handle, $sql);
-						    while ($db_field = mysqli_fetch_assoc($result) ){
-						    	echo '<form name="form" action="retirer.php" method="post">';
-						    	echo '<div class="caseitem">';
-								echo '<table  class="tableauimage">';
-								echo "<tr>";
-						    	echo "<td>";
-						    	echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
-								echo "<br>";
-						    	echo $db_field['nomitem'];
-						    	echo "<br>";
-						    	echo "Prix : ";
-						    	echo $db_field['prixunitaire'];
-						    	echo " €";
-						    	echo "<br>";
-						    	echo "<br>";
-						    	echo '<input type="submit" class="button" value ="Retirer article"/>';
-						    	echo '<br>';
-						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
-						    	echo "</td>";
-						    	echo"</tr>";
-						    	echo "</table>";
-						    	echo "</div>";
-						    	echo '</form>';
-						    }
-						?>									
+	<div class="row">           
+		<div class="list" id="tab">
+			<form  method="post" action="vendeur.php">
+				<table>
+					<p><b>Ajouter un article à vendre</b></p>
+					<tr>
+						<td>Nom du produit</td>
+						<td><input type="text" name="Nomprod" value=""/></td>
+					</tr>
+					<tr>
+						<td>Prix</td>
+						<td><input type="text" name="Prix" value=""/></td>
+					</tr>
+					<tr>
+						<td><a>Catégorie:</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td id="case1"><input type="checkbox" name="checkbo[]" value="Livres" id="checkbo1" class="checkbo"/>Livres</td>
+						<td id="select1">
+							<select name="cho1[]"> 
+								<option value="Roman">Roman</option> 
+								<option value="Fantastique">Fantastique</option>
+								<option value="BD">BD</option> 
+							</select> 
 						</td>
 					</tr>
+					<tr>
+						<td id="case2"><input type="checkbox" name="checkbo[]" value="Sport et Loisirs" id="checkbo2" class="checkbo"/>Sport et Loisirs</td>
+						<td id="select2">
+							<select name="cho2[]"> 
+								<option value="Running">Running</option> 
+								<option value="Sport extétieur">Sport extétieur</option>
+								<option value="Sport intérieur">Sport intérieur</option>
+								<option value="Autre">Autre</option> 
+							</select> 
+						</td>
+					</tr>
+					<tr>
+						<td id="case3"><input type="checkbox" name="checkbo[]" value="Musique" id="checkbo3" class="checkbo"/>Musique</td>
+						<td id="select3">
+							<select name="cho3[]"> 
+								<option value="Classique">Classique</option> 
+								<option value="Rap">Rap</option>
+								<option value="Rock">Rock</option>
+								<option value="Variété">Variété</option> 
+							</select> 
+						</td>
+					</tr>
+					<tr>
+						<td id="case4"><input type="checkbox" name="checkbo[]" value="Vêtements" id="checkbo4" class="checkbo"/>Vêtements</td>
+						<td id="select4">
+							<select name="cho4[]"> 
+								
+								<option value="Chemise">Chemise</option>
+								<option value="Chaussures">Chaussures</option>
+								<option value="T-shirt">T-shirt</option>
+								<option value="Pantalons">Pantalons</option> 
+							</select> 
+						</td>
+					</tr>												
+					<tr>
+						<td>Description</td>
+						<td><textarea type="text" name="Description" value=""/></textarea></td>
+					</tr>
+					<tr>
+						<td>taille*</td>
+						<td><input type="text" name="taille" value=""/></td>
+					</tr>
+					<tr>
+						<td>couleur*</td>
+						<td><input type="text" name="couleur" value=""/></td>
+					</tr>
+					<tr>
+						<td>genre*</td>
+						<td><input type="text" name="genre" value=""/></td>
+					</tr>
+					
+					<tr>
+						<td>Url image</td>
+						<td><input type="text" name="url" value=""/></td>
+					</tr>
+					<tr>
+						<td>Url vidéo*</td>
+						<td><input type="text" name="urlv" value=""/></td>
+					</tr>
+					<tr>
+						<td>(* optionnel)</td>
+						<td><input type="submit" value="Mettre en vente" id="button2" name="button2"/></td>
+					</tr>
 				</table>
-			</div>
+			</form>		
+		</div>         
+		<div class="blocvendeur">   
+			<table  class="bandeaubloc">
+				<tr><td>Vos articles en vente</td></tr>
+				<tr class="corpsbloc">
+					<td>
+						<?php
+						$database = "projetpiscine";
+						$db_handle  = mysqli_connect ('localhost', 'root', '');  
+						$db_found=mysqli_select_db ($db_handle ,$database ) ;
+						$sql="SELECT * FROM item";
+						$result = mysqli_query($db_handle, $sql);
+						while ($db_field = mysqli_fetch_assoc($result) ){
+							echo '<div class="caseitem">';
+							echo '<table  class="tableauimage">';
+							echo "<tr>";
+							echo "<td>";
+							echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
+							/*<a href='page_produit_détaillé.php'></a>*/
+							echo "<br>";
+							echo $db_field['nomitem'];
+							echo "<br>";
+							echo $db_field['prixunitaire'];
+							echo "€";
+							
+							echo "<br>";
+							echo "</td>";
+							echo"</tr>";
+							echo "</table>";
+							echo "</div>";
+						}
+						?>									
+					</td>
+				</tr>
+			</table>
+
+
 		</div>
-		<br>
+
+						
+						   
 	</div>
 </div>
 
