@@ -19,12 +19,14 @@ session_start();
 			$("#select2").hide();
 			$("#select3").hide();
 			$("#select4").hide();
+
 			$("#checkbo1").click(function(){               
 				$("#select1").toggle();
 				$("#case2").toggle();
 				$("#case3").toggle();
 				$("#case4").toggle();
 			});
+
 			$("#checkbo2").click(function(){               
 				$("#select2").toggle();
 				$("#case1").toggle();
@@ -37,6 +39,7 @@ session_start();
 				$("#case4").toggle();               
 				$("#select3").toggle();
 			});
+
 			$("#checkbo4").click(function(){                 
 				$("#select4").toggle();
 				$("#case1").toggle();
@@ -44,9 +47,21 @@ session_start();
 				$("#case3").toggle(); 			
 			});
 		});
-			
+
+		
 		
 	</script> 
+
+	<script>
+		$(document).ready(function(){
+
+			$("divimage").click(function(){
+				var id = $(this).attr("id");
+				alert(id);
+			});
+		});
+	</script>
+
 
 
 </head>
@@ -59,6 +74,7 @@ session_start();
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
+
 					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
@@ -69,10 +85,12 @@ session_start();
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Panier</a>
+
 				</li>         
 			</ul>       
 		</div> 
 	</nav> 
+
 	<div class="row">           
 		<div class="list" id="tab">
 			<form  method="post" action="vendeur.php">
@@ -139,6 +157,8 @@ session_start();
 					<td><textarea type="text" name="Description" value=""/></textarea></td>
 				</tr>
 									<tr>
+	</td>
+					
 						<td>taille*</td>
 						<td><input type="text" name="taille" value=""/></td>
 					</tr>
@@ -150,6 +170,7 @@ session_start();
 						<td>genre*</td>
 						<td><input type="text" name="genre" value=""/></td>
 					</tr>
+
 									
 				<tr>
 					<td>Url image</td>
@@ -165,174 +186,41 @@ session_start();
 				</tr>
 			</table>
 		</form>		
-		</div>         
-		<div class="blocvendeur">   
-			<table  class="bandeaubloc">
-				<tr><td>Vos articles en vente</td></tr>
-				<tr class="corpsbloc">
-					<td>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
 
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
+						<?php
+						$database = "projetpiscine";
+						$db_handle  = mysqli_connect ('localhost', 'root', '');  
+						$db_found=mysqli_select_db ($db_handle ,$database ) ;
+						$sql="SELECT * FROM item";
+						$result = mysqli_query($db_handle, $sql);
+						while ($db_field = mysqli_fetch_assoc($result) ){
+							echo '<div class="caseitem">';
+							echo '<table  class="tableauimage">';
+							echo "<tr>";
+							echo "<td>";
+							echo "<divimage id=".$db_field['iditem']."><img src=".$db_field['image']." height='142' width='142'/></divimage>";
+							/*<a href='page_produit_détaillé.php'></a>*/
+							echo "<br>";
+							echo $db_field['nomitem'];
+							echo "<br>";
+							echo $db_field['prixunitaire'];
+							echo "€";
+							
+							echo "<br>";
+							echo "</td>";
+							echo"</tr>";
+							echo "</table>";
+							echo "</div>";
+						}
+						?>									
 
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-							</table>
-						</div>
-						<div class="caseitem">
-							<table  class="tableauimage">
-
-								<tr>
-									<td>
-										<img src="photo_profil.png">
-									</td>
-									<td>Prix</td>
-								</tr>
-
-							</table>
-						</div>								
 					</td>
 				</tr>
 			</table>
 
 
 		</div>
+
 	</div>
 </div>
 

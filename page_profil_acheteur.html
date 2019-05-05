@@ -1,8 +1,3 @@
-
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +7,13 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="Piscine.css"> 
 	<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">            
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-	</script>  
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>  
+	</script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo mini tr.png"></a>         
+		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>        
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
@@ -39,27 +34,70 @@ session_start();
 			</ul>       
 		</div> 
 	</nav> 
+	<div class="testa">
+		<div class="row">          
+			<div class="list"id="tab"> 
+				<h4 class="title">Coordonnées</h4>
+				<table>
+					<tr>
+						<td>Nom</td>
+						<td><input type="text" name="nom"></td>
+					</tr>
+					<tr>
+						<td>Prénom</td>
+						<td><input type="text" name="prenom"></td>
+					</tr>
+					<tr>
+						<td>Adresse (ligne1)</td>
+						<td><input type="text" name="adresse"></td>
+					</tr>
+					<tr>
+						<td>Adresse (ligne2)</td>
+						<td><input type="text" name="adresse"></td>
+					</tr>
+					<tr>
+						<td>Ville</td>
+						<td><input type="text" name="Ville"></td>
+					</tr>
+					<tr>
+						<td>Code Postale</td>
+						<td><input type="text" name="CP"></td>
+					</tr>
+					<tr>
+						<td>Pays</td>
+						<td><input type="text" name="Pays"></td>
+					</tr>
+					<tr>
+						<td>Numéro de téléphone</td>
+						<td><input type="text" name="numtel"></td>
+					</tr>
+					<tr>
+						<td><input type="button" name="Validation" value="Valider"></td>
+					</tr>
+				</table>
+			</div>           
+			<div class="blocimages" id="historique">
+				<h4 class="title">Historique des Achats</h4>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+				<br>
+				<br>
+				<input type="button" name="acht" value="Revenir aux Achats">
+			</div>
+		</div>
+		<br>
+	</div>
+
+
+
+
+
 </body>
 
-<div class="texte_centre_gros">
-	<br>
-	Votre produit a bien été mis en vente !
-	<br>
-	<br>
-</div>
-<div class="image" >
-	<tr>
-		<td>
-
-			<form action="page_produit_détaillé.php">
-
-				<input type="submit" value="Aller sur la page du produit"/></td>
-				<br>
-				<br>
-				<br>
-			</form>
-	</tr>
-</div>
 <footer class="footer">
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12">
@@ -83,5 +121,4 @@ session_start();
 		</div>
 	</div>
 </footer>
-
 </html>

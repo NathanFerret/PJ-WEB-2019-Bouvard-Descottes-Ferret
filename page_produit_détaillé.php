@@ -43,6 +43,7 @@ session_start();
 <br>
 
 <div class="row">
+
 	<?php
 	$iditem=$_POST['iditem'];
 	$prixunitaire=$_POST['prixunitaire'];
@@ -63,6 +64,7 @@ session_start();
 				echo '<form name="form" action="page_profil_vendeur.php" method="post">';
 					echo '<div class="image">';
 						echo "<input type='text' style='display: none;' name ='pseudo' value=".$db_field['pseudo']." readonly>";
+
 						echo '<input type="submit" value="Aller sur le profil du vendeur"/>';
 					echo '</div>';
 				echo '</form>';
@@ -71,9 +73,11 @@ session_start();
 				echo '<form name="form" action="ajout_panier.php">';
 					echo '<div class="image">';
 						echo '<input type="submit" value="Ajouter au panier"/>';
+
 						echo '<br>';
 						echo $prixunitaire;
 						echo ' €';
+
 					echo '</div>';
 				echo '</form>';
 			echo '</div>';

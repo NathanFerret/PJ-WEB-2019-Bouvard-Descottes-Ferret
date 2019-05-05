@@ -1,8 +1,3 @@
-
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +13,7 @@ session_start();
 
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo mini tr.png"></a>         
+		<a class="navbar-brand" href="page_acheteur.php"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
@@ -28,32 +23,34 @@ session_start();
 					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
-					<a class="nav-link" href="#">Votre compte</a>
+					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
 				</li>          
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vendre</a>
+					<a class="nav-link" href="page_vendeur.php">Vendre</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Panier</a>
+					<a class="nav-link" href="page_panier.php">Panier</a>
 				</li>         
 			</ul>       
 		</div> 
 	</nav> 
 </body>
-
+<div class="testa">
 <div class="texte_centre_gros">
 	<br>
-	Votre produit a bien été mis en vente !
+	Votre commande a bien été enregistrée !
 	<br>
 	<br>
 </div>
 <div class="image" >
 	<tr>
 		<td>
-
-			<form action="page_produit_détaillé.php">
-
-				<input type="submit" value="Aller sur la page du produit"/></td>
+			Vous la recevrez dans quelques jours !
+			<br>
+			<br>
+			<br>
+			<form action="page_acheteur.html">
+				<input type="submit" class="button" value="Revenir à mes achats"/></td>
 				<br>
 				<br>
 				<br>
@@ -81,6 +78,7 @@ session_start();
 				&copy ECE PARIS 2019
 			</div>
 		</div>
+	</div>
 	</div>
 </footer>
 
