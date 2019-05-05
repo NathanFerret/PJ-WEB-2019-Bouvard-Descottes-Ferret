@@ -20,7 +20,11 @@
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vente Flash</a>
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' class="nav-link"  name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="nav-link"  name="cate" value="Vente Flash" style="border: 0px solid #5c8940;
+						background: transparent; cursor: pointer;  color: #FFFFFF;">
+					</form>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
@@ -49,7 +53,7 @@
 			<br>
 			<br>
 			<br>
-			<form action="page_acheteur.html">
+			<form action="page_acheteur.php">
 				<input type="submit" class="button" value="Revenir à mes achats"/></td>
 				<br>
 				<br>

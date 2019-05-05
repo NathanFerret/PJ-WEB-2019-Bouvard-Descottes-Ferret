@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +15,25 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script>             
-	$(document).ready(function(){ 
-		$(".hide").hide();
-		$(".show").hide();
-		
-		$("#checkbo1").click(function(){                  
-		$(".hide").toggle();
-		$("#checkbo2").toggle();
-		$("#bo").toggle();
+		$(document).ready(function(){ 
+			$(".hide").hide();
+			$(".show").hide();
+
+			$("#checkbo1").click(function(){                  
+				$(".hide").toggle();
+				$("#checkbo2").toggle();
+				$("#bo").toggle();
+			});
+
+			$("#checkbo2").click(function(){                  
+				$(".show").toggle(); 
+				$("#checkbo1").toggle();
+				$("#ba").toggle();                  
+			});
 		});
 
-		$("#checkbo2").click(function(){                  
-		$(".show").toggle(); 
-		$("#checkbo1").toggle();
-		$("#ba").toggle();                  
-		});
-	});
-
 		
-</script>    
+	</script>    
 </head>
 
 <body>
@@ -41,7 +45,11 @@
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vente Flash</a>
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' class="nav-link"  name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="nav-link"  name="cate" value="Vente Flash" style="border: 0px solid #5c8940;
+						background: transparent; cursor: pointer;  color: #FFFFFF;">
+					</form>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
@@ -64,27 +72,43 @@
 					<br><br>
 					<h5 class="ft_title">Coordonnées</h5>
 					<br>
-					<td>Nom</td>
-					<td><input type="text" name="Nom" value=""/></td>
-					<br><br>
-					<td>Prenom</td>
-					<td><input type="text" name="Prenom" value=""/></td>
-					<br><br>
-					<td>Adresse ligne 1</td>
-					<td><input type="text" name="Adresse ligne 1" value=""/></td>
-					<br><br>
-					<td>Adresse ligne 2</td>
-					<td><input type="text" name="Adresse ligne 2" value=""/></td>
-					<br><br>
-					<td>Ville</td>
-					<td><input type="text" name="Ville" value=""/></td>
-					<br><br>
-					<td>Code postal</td>
-					<td><input type="text" name="Code postal" value=""/></td>
-					<br><br>
-					<td>Numéro de téléphone</td>
-					<td><input type="text" name="Numéro de téléphone" value=""/></td>
-					<br><br>
+					<?php
+
+					$database = "projetpiscine";
+					$db_handle  = mysqli_connect ('localhost', 'root', '');  
+					$db_found=mysqli_select_db ($db_handle ,$database ) ;
+					$sess=$_SESSION['Login'];
+
+					$sql="SELECT * FROM utilisateur WHERE pseudo = '$sess'";
+					$result = mysqli_query($db_handle, $sql);
+					$db_field = mysqli_fetch_assoc($result);
+
+					$sqle="SELECT * FROM adresse INNER JOIN utilisateur ON adresse.idAdresse = utilisateur.idAdresse WHERE utilisateur.pseudo = '$sess'";
+					$resulte = mysqli_query($db_handle, $sqle);
+					$db_fielde = mysqli_fetch_assoc($resulte);
+
+					echo '<td>Nom</td>';
+					echo '<td><input type="text" name="nom" value='.$db_field["nom"].' ></td>';
+					echo '<br><br>';
+					echo '<td>Prénom</td>';
+					echo '<td><input type="text" name="prenom" value='.$db_field["prenom"].'></td>';
+					echo '<br><br>';
+					echo '<td>Adresse (ligne1)</td>';
+					echo '<td><input type="text" name="adresse1" value="'.$db_fielde["adresse1"].'""></td>';
+					echo '<br><br>';
+					echo '<td>Adresse (ligne2)</td>';
+					echo '<td><input type="text" name="adresse2" value="'.$db_fielde["adresse2"].'""></td>';
+					echo '<br><br>';
+					echo '<td>Ville</td>';
+					echo '<td><input type="text" name="Ville" value="'.$db_fielde["ville"].'""></td>';
+					echo '<br><br>';
+					echo '<td>Code Postale</td>';
+					echo '<td><input type="text" name="CP" value='.$db_fielde["codePostal"].'></td>';
+					echo '<br><br>';
+					echo '<td>Numéro de téléphone</td>';
+					echo '<td><input type="text" name="numtel" value="'.$db_field["numeroTel"].'""></td>';
+					echo '<br><br>';
+					?>
 				</tr>
 			</div>
 			<br>
@@ -94,35 +118,46 @@
 
 		<div class="col-lg-5 col-md-5 col-sm-12">
 			<div class="colonne">
-				<form name="form" action="finaliser la commande.php" method="post">
-					<tr>
-						<br><br>
-						<h6 class="ft_title">Moyen de paiement</h6>
-						<td><input type="checkbox" id="checkbo1" class="checkbo" name="CarteBancaire"/><h8 id="ba">Carte bancaire</h8></td>
+
+				<tr>
+					<br><br>
+					<h6 class="ft_title">Moyen de paiement</h6>
+					<td><input type="checkbox" id="checkbo1" class="checkbo" name="CarteBancaire"/><h8 id="ba">Carte bancaire</h8></td>
+					<br><br>
+
+					<form name="form" method="post" action =commande_acheteur.php>
+
+						<td><input type="text" class="hide" name="TitulaireCarte"/><h8 class="hide">Titulaire de la carte (Mr/Mme Prénom NOM)</h8></td>
 						<br><br>
 
-						<td><input type="text" class="hide" name="TitulaireCarte"/><h8 class="hide">Titulaire de la carte</h8></td>
-						<br><br>
-
-						<td><input type="text" class="hide" name="NumeroCarte"/><h8 class="hide">Numéro de carte</h8></td>
+						<td><input type="text" class="hide" name="NumeroCarte"/><h8 class="hide">Numéro de carte (0000000000000000 sans espaces ni tirets !)</h8></td>
 						<br><br>
 
 						<td class="mail"><input type="text" class="hide" name="Cryptogramme"/><h8 class="hide">Cryptogramme</h8></td>
 						<br><br>
 
-						<td class="mail2"><input type="text" class="hide" name="DateExpiration"/><h8 class="hide">Date d'expiration</h8></td>
-						<br><br><br>
-
-						<td><input type="checkbox" id="checkbo2" class="checkbo" name="ChequeCadeau"/><h8 id="bo">Chèque cadeau</h8></td>
+						<td class="mail2"><input type="text" class="hide" name="DateExpiration"/><h8 class="hide">Date d'expiration (année/mois/jour)</h8></td>
 						<br><br>
 
-						<td><input type="text" class="show" name="CodeCheque"/><h8 class="show">Code du chèque</h8></td>
+						<tr>
+							<td><input type="submit" class="hide" class="button" value="Finaliser la commande par CB"/></td>
+						</tr>
+
 						<br><br><br>
-					</tr>
+
+					</form>
+
+					<td><input type="checkbox" id="checkbo2" class="checkbo" name="ChequeCadeau"/><h8 id="bo">Chèque cadeau</h8></td>
+					<br><br>
+
+					<td><input type="text" class="show" name="CodeCheque"/><h8 class="show">Code du chèque</h8></td>
+					<br><br>
+
 					<tr>
-						<td><input type="submit" class="button" value="Finaliser la commande"/></td>
+						<td><input type="submit" class="show" class="button" value="Finaliser la commande par chèque cadeau"/></td>
 					</tr>
-				</form>
+				</tr>
+
 			</div>
 			<br>
 		</div>

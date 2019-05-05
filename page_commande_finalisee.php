@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,61 +34,35 @@ session_start();
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="page_panier.php">Panier</a>
-				</li>          
+				</li>         
 			</ul>       
 		</div> 
 	</nav> 
 </body>
 <div class="testa">
-<br>
-
-<div class="row">
-	<?php
-	$iditem=$_POST['iditem'];
-	$prixunitaire=$_POST['prixunitaire'];
-	$database = "projetpiscine";
-  	$db_handle  = mysqli_connect ('localhost', 'root', '');  
-  	$db_found=mysqli_select_db ($db_handle ,$database ) ;
-	$sql='SELECT * FROM item WHERE iditem = "'.$iditem.'" ';
-	$result = mysqli_query($db_handle, $sql);
-	$db_field = mysqli_fetch_assoc($result);
-	echo '<div class="col-lg-5 col-md-5 col-sm-12">';
-		echo '<img src='.$db_field['image'].' height="500" width="500"/>';
-	echo '</div>';
-	
-		echo '<div class="col-lg-7 col-md-7 col-sm-12">';
-		echo '<p class="bloc"><div class="image"> Description: '.$db_field['description']."<br>Catégorie: ".$db_field['categorie']."<br>Sous Catégorie: ".$db_field['sscategorie']."<br>Couleur: ".$db_field['couleur']."<br>taille: ".$db_field['taille']."<br>Genre: ".$db_field['genre'].' </div></p>';
-		echo '<div class="row">';
-			echo '<div class="col-lg-6 col-md-6 col-sm-12">';
-				echo '<form name="form" action="page_profil_vendeur.php" method="post">';
-					echo '<div class="image">';
-						echo "<input type='text' style='display: none;' name ='pseudo' value=".$db_field['pseudo']." readonly>";
-						echo '<input type="submit" class="button" value="Aller sur le profil du vendeur"/>';
-					echo '</div>';
-				echo '</form>';
-			echo '</div>';
-			echo '<div class="col-lg-6 col-md-6 col-sm-12">';
-				echo '<form name="form" action="ajout_panier.php" method="post">';
-					echo '<div class="image">';
-						echo "<input type='text' style='display: none;' name ='item' value=".$db_field['iditem']." readonly>";
-						echo '<input type="submit" class="button" value="Ajouter au panier"/>';
-						echo '<br>';
-						echo $prixunitaire;
-						echo ' €';
-					echo '</div>';
-				echo '</form>';
-			echo '</div>';
-		echo '</div>';
-	echo '</div>';
-	?>
+<div class="texte_centre_gros">
+	<br>
+	Votre commande a bien été enregistrée !
+	<br>
+	<br>
 </div>
-
-
-<br>
+<div class="image" >
+	<tr>
+		<td>
+			Vous la recevrez dans quelques jours !
+			<br>
+			<br>
+			<br>
+			<form action="commande_finalisée.php">
+				<input type="submit" class="button" value="Revenir à mes achats"/></td>
+				<br>
+				<br>
+				<br>
+			</form>
+	</tr>
 </div>
 <footer class="footer">
 	<div class="row">
-
 		<div class="col-lg-1 col-md-1 col-sm-12">
 			<div class="image">
 				Mail :<br>
@@ -112,6 +82,7 @@ session_start();
 				&copy ECE PARIS 2019
 			</div>
 		</div>
+	</div>
 	</div>
 </footer>
 

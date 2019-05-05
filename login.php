@@ -22,7 +22,7 @@ if (isset ($_POST['butt'])){
 		if (mysqli_num_rows($result) == 0) { 
 			echo "Saisie incorrecte";
 			echo" 
-			<form name='x' action='page_acceuil_login.php' method='post'>
+			<form name='x' action='page_accueil_login.php' method='post'>
 			<input type='submit' value='Retour'>
 			</form>";
 		}

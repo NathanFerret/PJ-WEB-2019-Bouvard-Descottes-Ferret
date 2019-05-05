@@ -24,7 +24,11 @@ session_start();
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="page_panier.php">Vente Flash</a>
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' class="nav-link"  name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="nav-link"  name="cate" value="Vente Flash" style="border: 0px solid #5c8940;
+						background: transparent; cursor: pointer;  color: #FFFFFF;">
+					</form>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
@@ -42,152 +46,67 @@ session_start();
 		<div class="row">           
 			<div class="blocvendeur" id="tab2">   
 				<table  class="bandeaubloc">
-					<tr><td><h2 class="feature-title"> Résumé de votre panier</h2></td></tr>
 					<tr class="corpsbloc">
 						<td>
-							<div class="caseitem">
-								<table  class="tableauimage">
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-								</table>
-							</div>
-							<div class="caseitem">
-								<table  class="tableauimage">
+							<?php
+							
 
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
+							$database = "projetpiscine";
+							$db_handle  = mysqli_connect ('localhost', 'root', '');  
+							$db_found=mysqli_select_db ($db_handle ,$database ) ;
+							$pseudo = $_SESSION['Login'];
+							
 
-								</table>
-							</div>
-							<div class="caseitem">
-								<table  class="tableauimage">
+							$sql="SELECT idPanier FROM panier WHERE pseudo LIKE '$pseudo'";
 
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
+							$result = mysqli_query($db_handle, $sql);
+							$db_field = mysqli_fetch_assoc($result);
+							$panier=$db_field['idPanier'];
 
-								</table>
-							</div>
-							<div class="caseitem">
-								<table  class="tableauimage">
 
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
+							$sql="SELECT * From item WHERE idPanier LIKE '$panier'";
+							$result = mysqli_query($db_handle, $sql);
+							while ($db_field = mysqli_fetch_assoc($result) ){
+								
 
-								</table>
-							</div>
+								echo '<form name="form" action="page_produit_détaillé.php" method="post">';
+								echo '<div class="caseitem">';
+								echo '<table  class="tableauimage">';
+								echo "<tr>";
+								echo "<td>";
+								echo "<img src=".$db_field['image']." height='142' width='142'/>";
+								echo "<br>";
+								echo $db_field['nomitem'];
+								echo "<br>";
+								echo "Prix : ";
+								echo $db_field['prixunitaire'];
+								echo "<input type='text' style='display: none;' name ='prixunitaire' value=".$db_field['prixunitaire']." readonly>";
+								echo " €";
+								echo "<br>";
+								echo "Vendeur : ";
+								echo $db_field['pseudo'];
+								echo "<br>";
+								echo '<input type="submit" class="button" value ="Voir le produit"/>';
+								echo '<br>';
+								echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
+								echo "<br>";
+								echo "</form>";
+								echo '<form name="form" action="retirer_panier.php" method="post">';
+								echo "<input type='text' style='display: none;' name ='item' value=".$db_field['iditem']." readonly>";
+								echo '<input type="submit" class="button" value="Retirer du panier"/>';
+								
+								echo '</form>';					    	
+								echo "</td>";
+								echo"</tr>";
+								echo "</table>";
+								echo "</div>";
+							}
+							$sum="SELECT SUM(prixunitaire) AS prix
+							FROM item WHERE idpanier= '$panier' ";  
+							$result = mysqli_query($db_handle, $sum);
+							$db_field = mysqli_fetch_assoc($result);
 
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>	
-							<div class="caseitem">
-								<table  class="tableauimage">
-
-									<tr>
-										<td>
-											<img src="photo_profil.png">
-										</td>
-										<td>Prix</td>
-									</tr>
-
-								</table>
-							</div>								
+							?>							
 						</td>
 					</tr>
 				</table>
@@ -195,29 +114,29 @@ session_start();
 
 			</div>
 
-
 			<div class="listpanier" id="tab" >
 				<table>
+					<?php
+					$tot=0;
+					
+					echo "<tr>";
+					echo "<td>Prix</td>";
+					$tot=$db_field['prix'];
+					echo "<td><input type='text' name='Prix' value='$tot €'' style='border: 0px solid #5c8940;
+					background: transparent;'readonly/>";
+					echo "</td>";
+					echo "</tr>";
+					echo"<form name='form' action='page_commande_acheteur.php' method='post'>";
+					echo "<td><input type='submit' class='button' value='Commander'/></td>";
+					echo "<td></td>";
+					echo "</tr>";
+					?>
+				</table>
 
-					<tr>
-						<td>Code de réduction</td>
-						<td><input type="text" name="Réduction" value=""/></td>
-					</tr>
-
-					<tr>
-						<td>Prix</td>
-						<td><input type="text" name="Prix" value=""/></td>
-					</tr>
-
-					<td><input type="submit" class="button" value="Commander"/></td>
-					<td></td>
-				</tr>
-			</table>
-
+			</div>
 		</div>
+		<br>
 	</div>
-	<br>
-</div>
 
 
 

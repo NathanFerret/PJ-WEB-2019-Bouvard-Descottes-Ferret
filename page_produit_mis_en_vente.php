@@ -1,8 +1,6 @@
-
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +16,18 @@ session_start();
 
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo mini tr.png"></a>         
+		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vente Flash</a>
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' class="nav-link"  name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="nav-link"  name="cate" value="Vente Flash" style="border: 0px solid #5c8940;
+						background: transparent; cursor: pointer;  color: #FFFFFF;">
+					</form>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="#">Votre compte</a>
@@ -40,7 +42,7 @@ session_start();
 		</div> 
 	</nav> 
 </body>
-
+<div class="testa">
 <div class="texte_centre_gros">
 	<br>
 	Votre produit a bien été mis en vente !
@@ -50,15 +52,14 @@ session_start();
 <div class="image" >
 	<tr>
 		<td>
-
-			<form action="page_produit_détaillé.php">
-
-				<input type="submit" value="Aller sur la page du produit"/></td>
+			<form action="page_vendeur.php">
+				<input type="submit" class="button" value="Retour au menu vendeur"/></td>
 				<br>
 				<br>
 				<br>
 			</form>
 	</tr>
+</div>
 </div>
 <footer class="footer">
 	<div class="row">

@@ -43,66 +43,151 @@ session_start();
 </head>
 <body>
 	<nav class="navbar navbar-expand-md">      
-		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>         
+		<a class="navbar-brand" href="page_acheteur.php"><img src="logo_mini_tr.png"></a>         
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vente Flash</a>
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' class="nav-link"  name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="nav-link"  name="cate" value="Vente Flash" style="border: 0px solid #5c8940;
+						background: transparent; cursor: pointer;  color: #FFFFFF;">
+					</form>
 				</li>            
 				<li class="nav-item">
-					<a class="nav-link" href="#">Votre compte</a>
+					<a class="nav-link" href="page_profil_acheteur.php">Votre compte</a>
 				</li>          
 				<li class="nav-item">
-					<a class="nav-link" href="#">Vendre</a>
+					<a class="nav-link" href="page_vendeur.php">Vendre</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Panier</a>
-				</li>         
+					<a class="nav-link" href="page_panier.php">Panier</a>
+				</li>       
 			</ul>       
 		</div> 
 	</nav> 
 	<div class="testa">
 		<div class="row">          
 			<div class="list"id="tab"> 
+				
 				<h2>Catégories</h2><br>
-				<h3><a class="feature-title" href="#">Vente Flash</a></h3> 
-				<br>
-				<dl>         
-					<dt id="liv"> Livres </dt>            
-						<dd class="sousliv"> <a class="body-link" href="#">Roman</a></dd>
-						<dd class="sousliv"> <a class="body-link" href="#">Fantastique</a></dd>
-						<br>
-					<dt id="mus"> Musiques </dt>             
-						<dd class="sousmus"> <a class="body-link" href="#">Variété</a></dd>
-						<dd class="sousmus"> <a class="body-link" href="#">Rock</a></dd>
-						<dd class="sousmus"> <a class="body-link" href="#">Rap</a></dd>
-						<br>
-					<dt id="vet"> Vêtements </dt>             
-						<dd class="sousvet"> <a class="body-link" href="#">Chaussure</a></dd>
-						<dd class="sousvet"> <a class="body-link" href="#">Chemise</a></dd>
-						<dd class="sousvet"> <a class="body-link" href="#">T-shirt</a></dd>
-						<dd class="sousvet"> <a class="body-link" href="#">Pantalons</a></dd>
-						<br>
-					<dt id="spo"> Sport </dt>             
-						<dd class="sousspo"> <a class="body-link" href="#">Running</a></dd>
-						<dd class="sousspo"> <a class="body-link" href="#">Sport d'extérieur</a></dd>
-						<dd class="sousspo"> <a class="body-link" href="#">Sport d'intérieur</a></dd>
-						<dd class="sousspo"> <a class="body-link" href="#">Autre</a></dd>
+				
+				<h3>						
+					<form name="forme" action="page_produits.php" method="post"> 
+						<input type='text' style='display: none;' name ='cat' value="Vente Flash" readonly>
+						<input type="submit" class="feature-title" name="cate" value="Vente Flash" style="border: 0px solid #5c8940; cursor: pointer;
+						background: transparent;">
+					</form></h3> 
+					<br>
 
-				</dl> 
-			</div>                  
+					<dl>         
+						<dt id="liv"> Livres </dt>            
+						<dd  class="sousliv">
+							<form name="forme" action="page_produits.php" method="post"> 
+								<input type='text' style='display: none;' name ='cat' value="Roman" readonly>
+								<input type="submit"  class="body-link" name="cate" value="Roman" style="border: 0px solid #5c8940;
+								background: transparent;">
+							</form>
+						</dd>
+						<dd class="sousliv"> 
+							<form name="forme" action="page_produits.php" method="post">
+								<input type='text' style='display: none;' name ='cat' value="Fantastique" readonly> 
+								<input type="submit" class="body-link" name="cate" value="Fantastique" style="border: 0px solid #5c8940;
+								background: transparent;">
+							</form>
+						</dd>
+						<dd class="sousliv"> 
+							<form name="forme" action="page_produits.php" method="post">
+								<input type='text' style='display: none;' name ='cat' value="BD" readonly> 
+								<input type="submit" class="body-link" name="cate" value="BD" style="border: 0px solid #5c8940;
+								background: transparent;">
+							</form>
+						</dd>
+						<br>
+						<dt id="mus"> Musiques </dt>    
+
+						<dd class="sousmus"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Classique" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Classique" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>        
+						<dd class="sousmus"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Variété" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Variété" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousmus"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Rock" readonly> 
+							<input type="submit"  class="body-link" name="cate" value="Rock" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousmus"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Rap" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Rap" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<br>
+						<dt id="vet"> Vêtements </dt>             
+						<dd class="sousvet"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Chaussures" readonly> 
+							<input type="submit"  class="body-link" name="cate" value="Chaussures" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousvet"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Chemise" readonly> 
+							<input type="submit" class="body-link" name="cate" value="Chemise" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousvet"><form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="T-shirt" readonly> 
+							<input type="submit" class="body-link" name="cate" value="T-shirt" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousvet"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Pantalons" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Pantalons" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<br>
+						<dt id="spo"> Sport </dt>             
+						<dd class="sousspo"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Running" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Running" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousspo"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Sport extérieur" readonly> 
+							<input type="submit" class="body-link"  name="cate" value="Sport extérieur" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousspo"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Sport intérieur" readonly> 
+							<input type="submit" class="body-link" name="cate" value="Sport intérieur" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+						<dd class="sousspo"> <form name="forme" action="page_produits.php" method="post">
+							<input type='text' style='display: none;' name ='cat' value="Autre" readonly> 
+							<input type="submit" class="body-link" name="cate" value="Autre" style="border: 0px solid #5c8940;
+							background: transparent;">
+						</form></dd>
+
+					</dl> 
+				
+			</div>                           
 		<div class="blocvendeur" id="tab2">   
 			<table  class="bandeaubloc">
 				<tr class="corpsbloc">
 					<td>
 						<?php
-   							$database = "projetpiscine2";
+   							$database = "projetpiscine";
   							$db_handle  = mysqli_connect ('localhost', 'root', '');  
   							$db_found=mysqli_select_db ($db_handle ,$database ) ;
-							$sql="SELECT * FROM item";
+  							$cat = $_POST["cat"];
+  							echo "$cat";
+  							$sql="SELECT * FROM item WHERE sscategorie LIKE '$cat'";
+
 						    $result = mysqli_query($db_handle, $sql);
 						    while ($db_field = mysqli_fetch_assoc($result) ){
 						    	echo '<form name="form" action="page_produit_détaillé.php" method="post">';
@@ -122,7 +207,36 @@ session_start();
 						    	echo "Vendeur : ";
 						    	echo $db_field['pseudo'];
 						    	echo "<br>";
-						    	echo '<input type="submit" value ="Voir le produit"/>';
+						    	echo '<input type="submit" class="button" value ="Voir le produit"/>';
+						    	echo '<br>';
+						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
+						    	echo "</td>";
+						    	echo"</tr>";
+						    	echo "</table>";
+						    	echo "</div>";
+						    	echo '</form>';
+						    }
+						    $sql="SELECT * FROM item WHERE categorie LIKE '$cat'";
+						    $result = mysqli_query($db_handle, $sql);
+						    while ($db_field = mysqli_fetch_assoc($result) ){
+						    	echo '<form name="form" action="page_produit_détaillé.php" method="post">';
+						    	echo '<div class="caseitem">';
+								echo '<table  class="tableauimage">';
+								echo "<tr>";
+						    	echo "<td>";
+						    	echo "<img src=".$db_field['image']." height='142' width='142'/>";
+								echo "<br>";
+						    	echo $db_field['nomitem'];
+						    	echo "<br>";
+						    	echo "Prix : ";
+						    	echo $db_field['prixunitaire'];
+						    	echo "<input type='text' style='display: none;' name ='prixunitaire' value=".$db_field['prixunitaire']." readonly>";
+						    	echo " €";
+						    	echo "<br>";
+						    	echo "Vendeur : ";
+						    	echo $db_field['pseudo'];
+						    	echo "<br>";
+						    	echo '<input type="submit" class="button" value ="Voir le produit"/>';
 						    	echo '<br>';
 						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
 						    	echo "</td>";

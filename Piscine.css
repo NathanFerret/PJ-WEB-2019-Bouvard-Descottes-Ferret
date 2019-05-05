@@ -13,10 +13,7 @@ body {
 .nav-link {   
 	margin-right: 1em !important; /*espace entre les items de nav*/
 	} 
-  
-
 .nav-link:hover,.body-link:hover, .feature-title:hover, .button:hover{   
-
 	color: #000; /*item en couleur noir lorsqu'on passe dessus*/
 	} 
 .navbar-collapse {   
@@ -74,11 +71,9 @@ dt{
     color: #fff; 
 }
 .blocimages{
-
 	min-width: 68%;
 	text-align: center;
 	max-width: 69%;
-
 
 }
 .footer{
@@ -133,9 +128,7 @@ dt{
 .texte_centre_gros{
 	text-align: center;
 	font-size: xx-large;
-
 	color: #ff4500;
-
 }
 
 .margin{
@@ -146,7 +139,6 @@ dt{
 	margin-left: 1em;
 }
 .blocvendeur{
-
 	min-width: 68%;
 	max-width: 69%;
 	margin-top: 1em;
@@ -154,15 +146,12 @@ dt{
 .bandeaubloc{
 	min-width: 100%;
 	border: 2px solid #ff4500;
-
 	text-align: center;
 }
 .corpsbloc{
 	min-width: 100%;
 	min-height: 100%;
-
 	border: 2px solid #ff4500;
-
 	text-align: center;
 
 }
@@ -180,7 +169,6 @@ dt{
 
 .listpanier{
 	min-width: 10%;
-
 }
 .ft_title{
 	color:#ff4500;   
@@ -198,4 +186,3 @@ dt{
 .checkbo{
 	cursor: pointer;
 }
-

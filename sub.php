@@ -23,20 +23,20 @@ if (isset ($_POST['butt'])){
   $db_found=mysqli_select_db ($db_handle ,$database ) ;
   if ($db_found) {
 
-    $sql="SELECT * FROM utilisateur WHERE pseudo LIKE '%$Pseudo%'";
+    $sql="SELECT * FROM utilisateur WHERE pseudo LIKE '$Pseudo'";
     $result = mysqli_query($db_handle, $sql);
     
     if (mysqli_num_rows($result) != 0) { 
      echo "pseudo déjà utilisé";
      echo" 
-     <form name='x' action='page_acceuil_login.php' method='post'>
+     <form name='x' action='page_accueil_login.php' method='post'>
      <input type='submit' value='Retour'>
      </form>";
    }
 
    else {
 
-        $sql= "INSERT INTO utilisateur (pseudo , email, mdp, nom, prenom,numeroTel,statut) VALUES('$Pseudo','$email','$Mdp','$nom','$Prenom','$phone','normal')";
+        $sql= "INSERT INTO utilisateur (pseudo , email, mdp, nom, prenom,numeroTel,statut,photo,imageDeFond) VALUES('$Pseudo','$email','$Mdp','$nom','$Prenom','$phone','normal','https://image.noelshack.com/fichiers/2019/18/6/1556971901-photo-profil.png','https://image.noelshack.com/fichiers/2019/18/6/1556971916-photo-couverture.png')";
 
 
         $result = mysqli_query($db_handle, $sql);
@@ -52,6 +52,8 @@ if (isset ($_POST['butt'])){
         $idrecup=mysqli_insert_id($db_handle);
         $sqlt = "UPDATE utilisateur SET idAdresse = '$idrecup' WHERE pseudo = '$Pseudo' ";
         $result = mysqli_query($db_handle, $sqlt); 
+        $sqld = "INSERT INTO panier (pseudo) VALUES('$Pseudo')"; 
+        $result = mysqli_query($db_handle, $sqld);
         session_start();
         $_SESSION['Login']=$Pseudo;
         $_SESSION['Stock']=$Pseudo;
