@@ -50,6 +50,7 @@ session_start();
 		
 		
 	</script> 
+
 	<script>
 		$(document).ready(function(){
 
@@ -59,6 +60,7 @@ session_start();
 			});
 		});
 	</script>
+
 
 </head>
 <body>
@@ -70,6 +72,7 @@ session_start();
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
+
 					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
@@ -80,10 +83,12 @@ session_start();
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Panier</a>
+
 				</li>         
 			</ul>       
 		</div> 
 	</nav> 
+
 	<div class="row">           
 		<div class="list" id="tab">
 			<form  method="post" action="vendeur.php">
@@ -214,6 +219,9 @@ session_start();
 
 
 		</div>
+
+						
+						   
 	</div>
 </div>
 
