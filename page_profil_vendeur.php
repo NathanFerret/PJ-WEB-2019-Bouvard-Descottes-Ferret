@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -34,32 +33,54 @@ session_start();
 					<a class="nav-link" href="#">Vendre</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Panier</a>
+					<a class="nav-link" href="#"><img src="panier tr.png"></a>
 				</li>         
 			</ul>       
 		</div> 
 	</nav> 
 </body>
 
-<div class="texte_centre_gros">
-	<br>
-	Votre produit a bien été mis en vente !
-	<br>
-	<br>
-</div>
-<div class="image" >
-	<tr>
-		<td>
+<?php
+$pseudo = $_POST['pseudo'];
+$database = "projetpiscine2";
+$db_handle  = mysqli_connect ('localhost', 'root', '');  
+$db_found=mysqli_select_db ($db_handle ,$database ) ;
+$sql='SELECT * FROM utilisateur WHERE pseudo = "'.$pseudo.'" ';
+$result = mysqli_query($db_handle, $sql);
+$db_field = mysqli_fetch_assoc($result);
+echo '<div class="margin">';
+	echo '<div class="row">';
+		echo '<div class="col-lg-6 col-md-6 col-sm-12">';
+			echo "<img src=".$db_field['imageDeFond']." height='176' width='501'/>";
+			echo '<br>';
+			echo '<br>';
 
-			<form action="page_produit_détaillé.php">
+			echo '<div class="row">';
+				echo '<div class="col-lg-2 col-md-2 col-sm-12">';
+					echo "<img src=".$db_field['photo']." height='142' width='142'/>";
+				echo '</div>';
+				echo '<div class="col-lg-10 col-md-10 col-sm-12">';
+					echo "<p class='bloc'>".$db_field['descriptionutilisateur']."</p>";
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
+		echo '<div class="col-lg-6 col-md-6 col-sm-12">';
+			echo '<div class="texte_centre_gros">';
+				echo '<ul>VENTES EN COURS :';
+			echo '</div>';
+			echo '<div class="image">';
+					echo '<li>Produit 1</li>';
+					echo '<li>Produit 2</li>';
+					echo '<li>Produit 3</li>';
+			echo '</div>';
+				echo '</ul>';
+			echo '</div>';
+		echo '</div>';
+	echo '</div>';
+echo '</div>';
+?>
 
-				<input type="submit" value="Aller sur la page du produit"/></td>
-				<br>
-				<br>
-				<br>
-			</form>
-	</tr>
-</div>
+
 <footer class="footer">
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12">

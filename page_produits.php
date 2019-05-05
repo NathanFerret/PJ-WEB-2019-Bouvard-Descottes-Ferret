@@ -1,72 +1,65 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title> ECE Amazon </title>  
+	<title> ECE Amazon produit </title>  
 	<meta charset="utf-8">  
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="Piscine.css"> 
 	<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">            
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-	</script> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+	</script>  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>  
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script>             
-
-	$(document).ready(function(){ 
-		$(".sousliv").hide();
-		$(".sousmus").hide();
-		$(".sousvet").hide();
-		$(".sousspo").hide(); 
-
-		$("#liv").click(function(){                  
-		$(".sousliv").toggle();
-		});
-		$("#mus").click(function(){                  
-		$(".sousmus").toggle();                   
-		});
-		$("#vet").click(function(){                  
-		$(".sousvet").toggle();                   
+		$(document).ready(function(){ 
+			$(".sousliv").hide();
+			$(".sousmus").hide();
+			$(".sousvet").hide();
+			$(".sousspo").hide(); 
+			$("#liv").click(function(){                  
+				$(".sousliv").show();
+			});
+			$("#mus").click(function(){                  
+				$(".sousmus").show();                   
+			});
+			$("#vet").click(function(){                  
+				$(".sousvet").show();                   
+			}); 
+			$("#spo").click(function(){                  
+				$(".sousspo").show();                   
+			});                
 		}); 
+	</script>  
 
-		$("#spo").click(function(){                  
-		$(".sousspo").toggle();                   
-		});                
-	}); 
-</script>  
+ 	<divstock id="vide"></divstock>
 
 	
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-md">      
-
 		<a class="navbar-brand" href="#"><img src="logo_mini_tr.png"></a>         
-
 		<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">      
 			<span class="navbar-toggler-icon"></span>        
 		</button>       
 		<div class="collapse navbar-collapse" id="main-navigation">     	
 			<ul class="navbar-nav">             
 				<li class="nav-item">
-
 					<a class="nav-link" href="#">Vente Flash</a>
 				</li>            
 				<li class="nav-item">
 					<a class="nav-link" href="#">Votre compte</a>
-
-
-
 				</li>          
 				<li class="nav-item">
-					<a class="nav-link" href="page_vendeur.php">Vendre</a>
+					<a class="nav-link" href="#">Vendre</a>
 				</li>
 				<li class="nav-item">
-
 					<a class="nav-link" href="#">Panier</a>
-
-
 				</li>         
 			</ul>       
 		</div> 
@@ -75,7 +68,6 @@ session_start();
 		<div class="row">          
 			<div class="list"id="tab"> 
 				<h2>Catégories</h2><br>
-
 				<h3><a class="feature-title" href="#">Vente Flash</a></h3> 
 				<br>
 				<dl>         
@@ -101,42 +93,59 @@ session_start();
 						<dd class="sousspo"> <a class="body-link" href="#">Autre</a></dd>
 
 				</dl> 
-p
-			</div>           
-			<div class="blocimages" id="tab2">         
-				<table id="tableau">
-					<tr>
-						<td>
+			</div>                  
+		<div class="blocvendeur" id="tab2">   
+			<table  class="bandeaubloc">
+				<tr class="corpsbloc">
+					<td>
+						<?php
+   							$database = "projetpiscine2";
+  							$db_handle  = mysqli_connect ('localhost', 'root', '');  
+  							$db_found=mysqli_select_db ($db_handle ,$database ) ;
+							$sql="SELECT * FROM item";
+						    $result = mysqli_query($db_handle, $sql);
+						    while ($db_field = mysqli_fetch_assoc($result) ){
+						    	echo '<form name="form" action="page_produit_détaillé.php" method="post">';
+						    	echo '<div class="caseitem">';
+								echo '<table  class="tableauimage">';
+								echo "<tr>";
+						    	echo "<td>";
+						    	echo "<img src=".$db_field['image']." height='142' width='142'/>";
+								echo "<br>";
+						    	echo $db_field['nomitem'];
+						    	echo "<br>";
+						    	echo "Prix : ";
+						    	echo $db_field['prixunitaire'];
+						    	echo "<input type='text' style='display: none;' name ='prixunitaire' value=".$db_field['prixunitaire']." readonly>";
+						    	echo " €";
+						    	echo "<br>";
+						    	echo "Vendeur : ";
+						    	echo $db_field['pseudo'];
+						    	echo "<br>";
+						    	echo '<input type="submit" value ="Voir le produit"/>';
+						    	echo '<br>';
+						    	echo "<input type='text' style='display: none;' name ='iditem' value=".$db_field['iditem']." readonly>"; 
+						    	echo "</td>";
+						    	echo"</tr>";
+						    	echo "</table>";
+						    	echo "</div>";
+						    	echo '</form>';
+						    }
+						?>							
+					</td>
+				</tr>
+			</table>
 
-							<a href='page_produits.php'><img src="livres.png" id="imagemenu"></a>
-						</td>
-						<td>
-							<a href='page_produits.php'><img src="Musiques.png"  id="imagemenu"></a>
 
-						</td>
-					</tr>
-					<tr>
-						<td>
-
-							<a href='page_produits.php'><img src="Vêtements.png" id="imagemenu"></a>
-						</td>
-						<td>
-							<a href='page_produits.php'><img src="Sports.png" id="imagemenu"></a>
-
-						</td>
-					</tr>
-				</table>
-			</div>
 		</div>
-	<br>
 	</div>
+</div>
 
 
 
 
 
 </body>
-
 <footer class="footer">
 	<div class="row">
 		<div class="col-lg-1 col-md-1 col-sm-12">
@@ -160,8 +169,4 @@ p
 		</div>
 	</div>
 </footer>
-
 </html>
-
-			
-

@@ -13,13 +13,12 @@ if (isset ($_POST['button2'])){
    $couleur = $_POST["couleur"] ;
    $genre = $_POST["genre"] ;
 
-
-
    foreach($_POST['checkbo'] as $valeur){}
     if($valeur=='Livres'){foreach($_POST['cho1'] as $selectValue){}}
       if($valeur=='Sport et Loisirs'){foreach($_POST['cho2'] as $selectValue){}}
         if($valeur=='Musique'){foreach($_POST['cho3'] as $selectValue){}}
           if($valeur=='Vêtements'){foreach($_POST['cho4'] as $selectValue){}}
+
 
 
 
@@ -37,6 +36,7 @@ if (isset ($_POST['button2'])){
            //var_dump($result);
            mysqli_close($db_handle);
            HEADER('Location:page_produit_mis_en_vente.php');
+
 
          }
          else{
